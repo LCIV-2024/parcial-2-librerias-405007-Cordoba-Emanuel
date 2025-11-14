@@ -1,6 +1,7 @@
 package com.example.libreria.service;
 
 import com.example.libreria.dto.ExternalBookDTO;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -14,18 +15,14 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class ExternalBookService {
-    // TODO: completar llamada a la API externa (ver bien todo el proyecto...)
     
     private final RestTemplate restTemplate;
     
     @Value("${external.api.books.url}")
     private String externalApiUrl;
-    
-    public ExternalBookService(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
     
     public List<ExternalBookDTO> fetchAllBooks() {
         try {
